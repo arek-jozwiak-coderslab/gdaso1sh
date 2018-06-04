@@ -25,13 +25,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 
-
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "pl.coderslab")
+@EnableTransactionManagement
 public class AppConfig extends WebMvcConfigurerAdapter {
-
-
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -40,6 +38,19 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+
+    @Bean
+    public LocalEntityManagerFactoryBean entityManagerFactory() {
+        LocalEntityManagerFactoryBean emfb = new LocalEntityManagerFactoryBean();
+        emfb.setPersistenceUnitName("gdaso1shPersistenceUnit");
+        return emfb;
+    }
+
+    @Bean
+    public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
+        JpaTransactionManager tm = new JpaTransactionManager(emf);
+        return tm;
     }
 
 
