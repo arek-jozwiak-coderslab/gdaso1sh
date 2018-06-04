@@ -1,11 +1,8 @@
 package pl.coderslab.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
+@Entity(name = "book")
 public class Book {
 
     @Id
@@ -15,6 +12,44 @@ public class Book {
     private String author;
     private String publisher;
     private String isbn;
+    private String coverType;
+    private String description;
+    private int rating;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public Book() {
+    }
+
+    public Book(String title, String author, String publisher, String isbn, String coverType) {
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.isbn = isbn;
+        this.coverType = coverType;
+    }
+
+    public String getCoverType() {
+        return coverType;
+    }
+
+    public void setCoverType(String coverType) {
+        this.coverType = coverType;
+    }
 
     public String getIsbn() {
         return isbn;
