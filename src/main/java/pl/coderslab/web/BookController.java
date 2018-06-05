@@ -29,8 +29,8 @@ public class BookController {
     @GetMapping("/add-book")
     @ResponseBody
     public String addBook() {
-        Book b = new Book("Thinking in Java", "Bruce Eckel",
-                "123321", "hard");
+        Book b = new Book();
+        b.setTitle("Thinking in Java");
         bookDao.save(b);
         return "added";
     }
@@ -38,8 +38,7 @@ public class BookController {
     @GetMapping("/add-book-with-author")
     @ResponseBody
     public String addBookWithAutor() {
-        Book b = new Book("Thinking in Java", "Bruce Eckel",
-                "123321", "hard");
+        Book b = new Book();
         Author author = authorDao.findById(1l);
 
         b.setAuthors(Arrays.asList(author));

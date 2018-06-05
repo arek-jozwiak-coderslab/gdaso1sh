@@ -4,21 +4,24 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity(name = "book")
-
-
+@Entity
+@Table(name="book")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
-    private String author;
-
     private String isbn;
     private String coverType;
     private String description;
     private int rating;
+
+    @ManyToOne
+    Publisher publisher;
+
+    @ManyToMany
+    private List<Author> authors;
 
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -48,12 +51,7 @@ public class Book {
         this.created = created;
     }
 
-    @ManyToOne
-    Publisher publisher;
 
-
-    @ManyToMany
-    private List<Author> authors;
 
     public List<Author> getAuthors() {
         return authors;
@@ -85,17 +83,6 @@ public class Book {
 
     public void setRating(int rating) {
         this.rating = rating;
-    }
-
-    public Book() {
-    }
-
-    public Book(String title, String author, String isbn, String coverType) {
-        this.title = title;
-        this.author = author;
-
-        this.isbn = isbn;
-        this.coverType = coverType;
     }
 
     public String getCoverType() {
@@ -130,11 +117,4 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 }

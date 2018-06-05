@@ -23,6 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import pl.coderslab.pl.coderslab.converter.AuthorConverter;
 
 
 @Configuration
@@ -56,6 +57,17 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager tm = new JpaTransactionManager(emf);
         return tm;
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+
+        registry.addConverter(  getAuthorConverter()  );
+    }
+
+    @Bean
+    public AuthorConverter getAuthorConverter() {
+        return new AuthorConverter();
     }
 
 

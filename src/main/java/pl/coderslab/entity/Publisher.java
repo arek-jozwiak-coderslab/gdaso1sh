@@ -10,6 +10,8 @@ public class Publisher {
     private long id;
     private String firstName;
     private String lastName;
+    @Transient
+    private String fullName;
 
     @OneToMany(mappedBy = "publisher")
     private List<Book> books;
@@ -37,5 +39,21 @@ public class Publisher {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

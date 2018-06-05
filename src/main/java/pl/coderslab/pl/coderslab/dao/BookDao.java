@@ -1,6 +1,7 @@
 package pl.coderslab.pl.coderslab.dao;
 
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
 import pl.coderslab.entity.Book;
 
@@ -23,6 +24,12 @@ public class BookDao {
 
     public Book findById(long id) {
         return entityManager.find(Book.class, id);
+    }
+
+    public Book findByIdWithAuthors(long id) {
+        Book b = entityManager.find(Book.class, id);
+        Hibernate.initialize(b.getAuthors());
+        return b;
     }
 
     public void update(Book entity) {
