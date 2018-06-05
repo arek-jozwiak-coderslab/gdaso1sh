@@ -46,8 +46,6 @@ public class BookEntityController {
         return authorDao.getAll();
     }
 
-
-
     @GetMapping("/add")
     public String showForm(Model model) {
         model.addAttribute("book", new Book());
@@ -76,7 +74,7 @@ public class BookEntityController {
 
     @PostMapping("/update")
     public String performUpdate(@ModelAttribute Book book) {
-        bookDao.save(book);
+        bookDao.update(book);
         return "redirect:/book/list";
     }
 
