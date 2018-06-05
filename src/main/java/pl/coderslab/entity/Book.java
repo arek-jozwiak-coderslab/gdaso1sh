@@ -1,6 +1,7 @@
 package pl.coderslab.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity(name = "book")
@@ -18,6 +19,34 @@ public class Book {
     private String coverType;
     private String description;
     private int rating;
+
+    private LocalDateTime created;
+    private LocalDateTime updated;
+
+    @PrePersist
+    protected void onCreate() {
+        created = LocalDateTime.now();
+    }
+    @PreUpdate
+    protected void onUpdate() {
+        updated = LocalDateTime.now();
+    }
+
+    public LocalDateTime getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(LocalDateTime updated) {
+        this.updated = updated;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
 
     @ManyToOne
     Publisher publisher;
