@@ -1,5 +1,9 @@
 package pl.coderslab.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+import pl.coderslab.pl.coderslab.validator.StartWith;
+import pl.coderslab.pl.coderslab.validator.YearOfBirthWith;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +14,20 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotBlank
     private String firstName;
     private String lastName;
+    @YearOfBirthWith
+    @NotBlank
+    private String yearOfBirth;
+
+    public String getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(String yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
 
     public long getId() {
         return id;

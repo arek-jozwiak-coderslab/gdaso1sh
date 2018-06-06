@@ -29,5 +29,9 @@ public class AuthorDao {
     }
 
 
+    public void save(Author author) {
+        entityManager.persist(author);
+    }
+
 
 }
