@@ -4,6 +4,7 @@ package pl.coderslab.web;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Author;
 import pl.coderslab.entity.Book;
@@ -13,6 +14,7 @@ import pl.coderslab.pl.coderslab.dao.BookDao;
 import pl.coderslab.pl.coderslab.dao.PublisherDao;
 import pl.coderslab.pl.coderslab.service.BookService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -41,6 +43,7 @@ public class BookEntityController {
     List<Publisher> getPublishers() {
         return publisherDao.getAll();
     }
+
     @ModelAttribute("authors")
     List<Author> getAuthors() {
         return authorDao.getAll();
@@ -53,7 +56,10 @@ public class BookEntityController {
     }
 
     @PostMapping("/add")
-    public String perform(@ModelAttribute Book book) {
+    public String perform(@ModelAttribute @Valid Book book, BindingResult result) {
+        if (result.hasErrors()) {
+            return "book/add";
+        }
         bookService.addBook(book);
         return "redirect:/book/list";
     }
@@ -61,14 +67,14 @@ public class BookEntityController {
     @GetMapping("/update/{id}")
     public String showForm(Model model, @PathVariable long id) {
         Book b = bookDao.findByIdWithAuthors(id);
-        model.addAttribute("book",b);
+        model.addAttribute("book", b);
         return "book/update";
     }
 
     @GetMapping("/show/{id}")
     public String show(Model model, @PathVariable long id) {
         Book b = bookDao.findByIdWithAuthors(id);
-        model.addAttribute("book",b);
+        model.addAttribute("book", b);
         return "book/show";
     }
 

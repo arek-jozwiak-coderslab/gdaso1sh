@@ -1,6 +1,12 @@
 package pl.coderslab.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,17 +17,35 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Min(5)
     private String title;
+    @NotBlank
     private String isbn;
     private String coverType;
+    @NotBlank
     private String description;
+    @Min(1)
+    @Max(10)
     private int rating;
 
+    @NotNull
     @ManyToOne
     Publisher publisher;
 
     @ManyToMany
+    @NotNull
     private List<Author> authors;
+
+    @Min(1)
+    private int pages;
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
 
     private LocalDateTime created;
     private LocalDateTime updated;

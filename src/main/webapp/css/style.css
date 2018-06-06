@@ -1,1 +1,3 @@
-body{background-color: red}
+body{background-color: #cacaca}
+.error{
+    color: red; border: solid 1px green}

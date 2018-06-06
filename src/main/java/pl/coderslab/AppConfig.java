@@ -3,6 +3,7 @@ package pl.coderslab;
 import java.util.Locale;
 
 import javax.persistence.EntityManagerFactory;
+import javax.validation.Validator;
 
 
 import org.springframework.context.annotation.Bean;
@@ -70,5 +71,15 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return new AuthorConverter();
     }
 
+    @Bean(name="localeResolver")
+    public LocaleContextResolver getLocaleContextResolver() {
+        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+        localeResolver.setDefaultLocale(new Locale("pl","PL"));
+        return localeResolver;
+    }
 
+    @Bean
+    public Validator validator() {
+        return new LocalValidatorFactoryBean();
+    }
 }
