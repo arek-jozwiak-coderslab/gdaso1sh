@@ -5,8 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Author;
 import pl.coderslab.entity.Student;
-import pl.coderslab.pl.coderslab.dao.AuthorDao;
-import pl.coderslab.pl.coderslab.dao.StudentDao;
+import pl.coderslab.dao.AuthorDao;
+import pl.coderslab.dao.StudentDao;
 
 import java.util.List;
 

@@ -1,10 +1,9 @@
 package pl.coderslab.entity;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
-import pl.coderslab.pl.coderslab.validator.StartWith;
-import pl.coderslab.pl.coderslab.validator.ValidationGroupName;
-import pl.coderslab.pl.coderslab.validator.ValidationGroupName2;
+import pl.coderslab.validator.StartWith;
+import pl.coderslab.validator.ValidationGroupName;
+import pl.coderslab.validator.ValidationGroupName2;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;

@@ -1,4 +1,4 @@
-package pl.coderslab.pl.coderslab.service;
+package pl.coderslab.service;
 
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
-package pl.coderslab.pl.coderslab.service;
+package pl.coderslab.service;
 
 
 import org.springframework.stereotype.Component;
 import pl.coderslab.entity.Book;
-import pl.coderslab.pl.coderslab.dao.BookDao;
+import pl.coderslab.dao.BookDao;
 
 @Component
 public class BookService {

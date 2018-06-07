@@ -5,8 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Person;
-import pl.coderslab.entity.Student;
-import pl.coderslab.pl.coderslab.dao.PersonDao;
+import pl.coderslab.dao.PersonDao;
 
 @Controller
 public class PersonController {

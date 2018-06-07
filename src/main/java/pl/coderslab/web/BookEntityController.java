@@ -1,7 +1,6 @@
 package pl.coderslab.web;
 
 
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Author;
 import pl.coderslab.entity.Book;
 import pl.coderslab.entity.Publisher;
-import pl.coderslab.pl.coderslab.dao.AuthorDao;
-import pl.coderslab.pl.coderslab.dao.BookDao;
-import pl.coderslab.pl.coderslab.dao.PublisherDao;
-import pl.coderslab.pl.coderslab.service.BookService;
+import pl.coderslab.dao.AuthorDao;
+import pl.coderslab.dao.BookDao;
+import pl.coderslab.dao.PublisherDao;
+import pl.coderslab.service.BookService;
 
 import javax.validation.Valid;
 import java.util.List;

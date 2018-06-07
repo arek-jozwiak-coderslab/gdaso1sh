@@ -1,4 +1,4 @@
-package pl.coderslab.pl.coderslab.dao;
+package pl.coderslab.dao;
 
 
 import org.hibernate.Hibernate;

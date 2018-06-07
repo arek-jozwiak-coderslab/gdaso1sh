@@ -6,10 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Author;
-import pl.coderslab.entity.Person;
-import pl.coderslab.pl.coderslab.dao.AuthorDao;
-import pl.coderslab.pl.coderslab.dao.PersonDao;
-import pl.coderslab.pl.coderslab.repositories.AuthorRepository;
+import pl.coderslab.repositories.AuthorRepository;
 
 import javax.validation.Valid;
 

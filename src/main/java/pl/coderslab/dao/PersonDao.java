@@ -1,9 +1,8 @@
-package pl.coderslab.pl.coderslab.dao;
+package pl.coderslab.dao;
 
 
 import org.springframework.stereotype.Component;
 import pl.coderslab.entity.Person;
-import pl.coderslab.entity.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

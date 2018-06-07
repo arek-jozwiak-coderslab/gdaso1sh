@@ -1,8 +1,7 @@
 package pl.coderslab.entity;
 
 import org.hibernate.validator.constraints.NotBlank;
-import pl.coderslab.pl.coderslab.validator.StartWith;
-import pl.coderslab.pl.coderslab.validator.YearOfBirthWith;
+import pl.coderslab.validator.YearOfBirthWith;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
