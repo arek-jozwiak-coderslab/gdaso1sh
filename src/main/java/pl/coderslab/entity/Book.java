@@ -36,7 +36,18 @@ public class Book {
 
     @NotNull(groups = ValidationGroupName2.class)
     @ManyToOne
-    Publisher publisher;
+    private Publisher publisher;
+
+    @ManyToOne
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     @ManyToMany
     @NotNull
@@ -147,4 +158,12 @@ public class Book {
         this.title = title;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                '}';
+    }
 }

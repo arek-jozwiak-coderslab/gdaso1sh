@@ -9,6 +9,7 @@ import pl.coderslab.entity.Author;
 import pl.coderslab.entity.Person;
 import pl.coderslab.pl.coderslab.dao.AuthorDao;
 import pl.coderslab.pl.coderslab.dao.PersonDao;
+import pl.coderslab.pl.coderslab.repositories.AuthorRepository;
 
 import javax.validation.Valid;
 
@@ -16,10 +17,19 @@ import javax.validation.Valid;
 @RequestMapping("/author")
 public class AuthorController {
 
-    private final AuthorDao authorDao;
+    private final AuthorRepository authorRepository;
 
-    public AuthorController(AuthorDao authorDao) {
-        this.authorDao = authorDao;
+    public AuthorController(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
+
+
+    @GetMapping("/test")
+    @ResponseBody
+    public String test(Model model) {
+        Author a1 = authorRepository.findOne(1L);
+        Author a2 = authorRepository.findByFirstName("arek");
+        return "test";
     }
 
     @GetMapping("/add")
@@ -33,7 +43,7 @@ public class AuthorController {
         if (result.hasErrors()) {
             return "author/add";
         }
-        authorDao.save(author);
+        authorRepository.save(author);
         return "added";
     }
 }
